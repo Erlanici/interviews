@@ -39,7 +39,14 @@ namespace FindAreaLibrary.Figure
             var p = (data.SideA + data.SideB + data.SideC) / 2;
 
             //формула Герона
-            var s = Math.Sqrt(p * (p - data.SideA) * (p - data.SideB) * (p - data.SideC));
+            var multiplication = p * (p - data.SideA) * (p - data.SideB) * (p - data.SideC);
+
+            if (multiplication <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(multiplication));
+            }
+
+            var s = Math.Sqrt(multiplication);
 
             return s;
         }

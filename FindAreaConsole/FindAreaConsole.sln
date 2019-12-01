@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindAreaConsole", "FindArea
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindAreaLibrary", "FindAreaLibrary\FindAreaLibrary.csproj", "{BF97FB0A-3D78-419F-BC7B-9D1B1DAC8683}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindAreaTest", "FindAreaTest\FindAreaTest.csproj", "{8B7B8AB2-74AF-45C7-A4D8-C21906E91D4D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{BF97FB0A-3D78-419F-BC7B-9D1B1DAC8683}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF97FB0A-3D78-419F-BC7B-9D1B1DAC8683}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF97FB0A-3D78-419F-BC7B-9D1B1DAC8683}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B7B8AB2-74AF-45C7-A4D8-C21906E91D4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B7B8AB2-74AF-45C7-A4D8-C21906E91D4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B7B8AB2-74AF-45C7-A4D8-C21906E91D4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B7B8AB2-74AF-45C7-A4D8-C21906E91D4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
