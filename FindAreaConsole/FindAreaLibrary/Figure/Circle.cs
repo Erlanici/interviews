@@ -9,19 +9,26 @@ namespace FindAreaLibrary.Figure
     /// </summary>
     public class Circle : IFigure<ParamOfCircle>
     {
-        public double GetArea(ParamOfCircle data)
+        public ParamOfCircle Parameters { get; set; }
+
+        public void SetParameters(ParamOfCircle data)
         {
-            if (data == null)
+            Parameters = data;
+        }
+
+        public double GetArea()
+        {
+            if (Parameters == null)
             {
-                throw new ArgumentNullException(nameof(data));
+                throw new ArgumentNullException(nameof(Parameters));
             }
 
-            if (data.Radius <= 0)
+            if (Parameters.Radius <= 0)
             {
-                throw new ArgumentNullException(nameof(data.Radius));
+                throw new ArgumentNullException(nameof(Parameters.Radius));
             }
 
-            var s = Math.PI * Math.Pow(data.Radius, 2);
+            var s = Math.PI * Math.Pow(Parameters.Radius, 2);
 
             return s;
         }

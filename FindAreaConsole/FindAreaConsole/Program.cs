@@ -32,7 +32,9 @@ namespace FindAreaConsole
             {
                 var circle = new Circle();
 
-                var s = circle.GetArea(new ParamOfCircle { Radius = radius });
+                circle.SetParameters(new ParamOfCircle { Radius = radius });
+
+                var s = circle.GetArea();
 
                 Console.WriteLine($"The area of the circle is {s:##.00}");
             }
@@ -67,12 +69,14 @@ namespace FindAreaConsole
             {
                 var triangle = new Triangle();
 
-                var s = triangle.GetArea(new ParamOfTriangle
+                triangle.SetParameters(new ParamOfTriangle
                 {
                     SideA = sideA,
                     SideB = sideB,
                     SideC = sideC
                 });
+
+                var s = triangle.GetArea();
 
                 Console.WriteLine($"The area of the triangle is {s:##.00}");
             }

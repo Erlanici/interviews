@@ -7,28 +7,35 @@ namespace FindAreaLibrary.Figure
     /// <summary>
     /// Треугольник
     /// </summary>
-    public class Triangle : IFigure<ParamOfTriangle>
+    public class Triangle : IFigure<ParamOfTriangle>, ITriangle
     {
-        public double GetArea(ParamOfTriangle data)
+        public ParamOfTriangle Parameters { get; set; }
+
+        public void SetParameters(ParamOfTriangle data)
+        {
+            Parameters = data;
+        }
+
+        public double GetArea()
         {
             #region Exception
 
-            if (data == null)
+            if (Parameters == null)
             {
-                throw new ArgumentNullException(nameof(data));
+                throw new ArgumentNullException(nameof(Parameters));
             }
 
-            if (data.SideA <= 0)
+            if (Parameters.SideA <= 0)
             {
                 throw new ArgumentNullException(nameof(ParamOfTriangle.SideA));
             }
 
-            if (data.SideB <= 0 || data.SideC <= 0)
+            if (Parameters.SideB <= 0 || Parameters.SideC <= 0)
             {
                 throw new ArgumentNullException(nameof(ParamOfTriangle.SideB));
             }
 
-            if (data.SideC <= 0)
+            if (Parameters.SideC <= 0)
             {
                 throw new ArgumentNullException(nameof(ParamOfTriangle.SideC));
             }
@@ -36,10 +43,10 @@ namespace FindAreaLibrary.Figure
             #endregion Exception
 
             // вычислим полупериметр
-            var p = (data.SideA + data.SideB + data.SideC) / 2;
+            var p = (Parameters.SideA + Parameters.SideB + Parameters.SideC) / 2;
 
             //формула Герона
-            var multiplication = p * (p - data.SideA) * (p - data.SideB) * (p - data.SideC);
+            var multiplication = p * (p - Parameters.SideA) * (p - Parameters.SideB) * (p - Parameters.SideC);
 
             if (multiplication <= 0)
             {
@@ -49,6 +56,15 @@ namespace FindAreaLibrary.Figure
             var s = Math.Sqrt(multiplication);
 
             return s;
+        }
+
+        public bool IsRightTriangle()
+        {
+            var right = (Parameters.SideA * Parameters.SideA + Parameters.SideB * Parameters.SideB == Parameters.SideC * Parameters.SideC) 
+                || (Parameters.SideA * Parameters.SideA + Parameters.SideC * Parameters.SideC == Parameters.SideB * Parameters.SideB) 
+                || (Parameters.SideC * Parameters.SideC + Parameters.SideB * Parameters.SideB == Parameters.SideA * Parameters.SideA);
+
+            return right;
         }
     }
 }

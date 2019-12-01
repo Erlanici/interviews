@@ -12,7 +12,9 @@ namespace FindAreaTest
         {
             var circle = new Circle();
 
-            Assert.Throws<ArgumentNullException>(() => circle.GetArea(null));
+            circle.SetParameters(null);
+
+            Assert.Throws<ArgumentNullException>(() => circle.GetArea());
         }
 
         [Theory]
@@ -24,7 +26,9 @@ namespace FindAreaTest
 
             var param = new ParamOfCircle { Radius = radius };
 
-            Assert.Throws<ArgumentNullException>(() => circle.GetArea(param));
+            circle.SetParameters(param);
+
+            Assert.Throws<ArgumentNullException>(() => circle.GetArea());
         }
 
         [Theory]
@@ -36,9 +40,24 @@ namespace FindAreaTest
 
             var param = new ParamOfCircle { Radius = radius };
 
-            var s = circle.GetArea(param);
+            circle.SetParameters(param);
+
+            var s = circle.GetArea();
 
             Assert.True(s > 0);
+        }
+
+        [Theory]
+        [InlineData(1)]
+        public void CircleSetParameters(double radius)
+        {
+            var circle = new Circle();
+
+            var param = new ParamOfCircle { Radius = radius };
+
+            circle.SetParameters(param);
+
+            Assert.True(circle.Parameters?.Radius == radius);
         }
     }
 }

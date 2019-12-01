@@ -12,7 +12,9 @@ namespace FindAreaTest
         {
             var triangle = new Triangle();
 
-            Assert.Throws<ArgumentNullException>(() => triangle.GetArea(null));
+            triangle.SetParameters(null);
+
+            Assert.Throws<ArgumentNullException>(() => triangle.GetArea());
         }
 
         [Theory]
@@ -28,7 +30,9 @@ namespace FindAreaTest
 
             var param = new ParamOfTriangle { SideA = sideA, SideB = sideB, SideC = sideC };
 
-            Assert.Throws<ArgumentNullException>(() => triangle.GetArea(param));
+            triangle.SetParameters(param);
+
+            Assert.Throws<ArgumentNullException>(() => triangle.GetArea());
         }
 
         [Theory]
@@ -41,7 +45,9 @@ namespace FindAreaTest
 
             var param = new ParamOfTriangle { SideA = sideA, SideB = sideB, SideC = sideC };
 
-            var s = triangle.GetArea(param);
+            triangle.SetParameters(param);
+
+            var s = triangle.GetArea();
 
             Assert.True(s > 0);
         }
@@ -54,7 +60,52 @@ namespace FindAreaTest
 
             var param = new ParamOfTriangle { SideA = sideA, SideB = sideB, SideC = sideC };
 
-            Assert.Throws<ArgumentOutOfRangeException>(() => triangle.GetArea(param));
+            triangle.SetParameters(param);
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => triangle.GetArea());
+        }
+
+        [Theory]
+        [InlineData(300, 4, 5)]
+        public void TriangleSetParameters(double sideA, double sideB, double sideC)
+        {
+            var triangle = new Triangle();
+
+            var param = new ParamOfTriangle { SideA = sideA, SideB = sideB, SideC = sideC };
+
+            triangle.SetParameters(param);
+
+            Assert.True(triangle.Parameters?.SideA == sideA);
+        }
+
+        [Theory]
+        [InlineData(300, 4, 5)]
+        public void TriangleIsRightTriangleNotRight(double sideA, double sideB, double sideC)
+        {
+            var triangle = new Triangle();
+
+            var param = new ParamOfTriangle { SideA = sideA, SideB = sideB, SideC = sideC };
+
+            triangle.SetParameters(param);
+
+            var right = triangle.IsRightTriangle();
+
+            Assert.False(right);
+        }
+
+        [Theory]
+        [InlineData(4, 5, 3)]
+        public void TriangleIsRightTriangleRight(double sideA, double sideB, double sideC)
+        {
+            var triangle = new Triangle();
+
+            var param = new ParamOfTriangle { SideA = sideA, SideB = sideB, SideC = sideC };
+
+            triangle.SetParameters(param);
+
+            var right = triangle.IsRightTriangle();
+
+            Assert.True(right);
         }
     }
 }

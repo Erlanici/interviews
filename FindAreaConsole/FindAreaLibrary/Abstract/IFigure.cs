@@ -6,10 +6,20 @@
     public interface IFigure<T>
     {
         /// <summary>
+        /// Параметры фигуры (например, радиус, стороны, углы)
+        /// </summary>
+        T Parameters { get; set; }
+
+        /// <summary>
+        /// Задать значение параметров
+        /// </summary>
+        /// <param name="data"></param>
+        void SetParameters(T data);
+
+        /// <summary>
         /// Получить площадь фигуры
         /// </summary>
-        /// <param name="data">Параметры фигуры, необходимые для определения площади</param>
         /// <returns>Площадь</returns>
-        double GetArea(T data);
+        double GetArea();
     }
 }
